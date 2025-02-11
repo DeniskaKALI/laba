@@ -1,10 +1,6 @@
-class MyClass: 
-    def __init__(self):
-        self.x = 1
-    def print_x(self):
-        print(self.x)
-c = MyClass
-
-c.print_x()
-print(c.x)
-
+class B: 
+    n = 5
+    def adder(v):
+        return v + B.n
+print(B.n)
+print(B.adder(4))
