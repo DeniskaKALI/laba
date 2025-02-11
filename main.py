@@ -1,24 +1,34 @@
+from random import randint
+import itertools
+
+
 class Person:
-    def __init__(self, first_name, last_name, skill_level=1):
-        self.first_name = first_name
-        self.last_name = last_name
-        self.skill_level = skill_level
+    count = itertools.count()
 
-    def __del__(self):
-        print("Goodbye, Mr.", self.first_name, self.last_name)
-
-    def info(self):
-        return "{} {}, Skill Level: {}".format(self.first_name, self.last_name, self.skill_level)
+    def __init__(self, team=randint(1, 2)):
+        self.id = next(Person.count)
+        self.team = team
 
 
-worker = Person("I", "Kotov", 3)
-helper = Person("D", "Myshev", 1)
-maker = Person("O", "Risov", 2)
+class Hero(Person):
+    pass
 
-print(worker.info())
-print(helper.info())
-print(maker.info())
 
-del helper
-print("End of program")
-input()
+class Soldier(Person):
+    pass
+
+
+h1 = Hero(1)
+h2 = Hero(2)
+army1 = []
+army2 = []
+
+for i in range(20):
+    soldier = Soldier()
+    if soldier.team == 1:
+        army1.append(soldier)
+    else:
+        army2.append(soldier)
+
+print("Army 1 size:", len(army1))
+print("Army 2 size:", len(army2))
