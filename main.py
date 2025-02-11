@@ -1,25 +1,24 @@
-from random import choice
+class Person:
+    def __init__(self, first_name, last_name, skill_level=1):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.skill_level = skill_level
+
+    def __del__(self):
+        print("Goodbye, Mr.", self.first_name, self.last_name)
+
+    def info(self):
+        return "{} {}, Skill Level: {}".format(self.first_name, self.last_name, self.skill_level)
 
 
-class Warrior:
-    def __init__(self, health=100):
-        self.health = health
+worker = Person("I", "Kotov", 3)
+helper = Person("D", "Myshev", 1)
+maker = Person("O", "Risov", 2)
 
-    def attack(self, opponent):
-        opponent.health -= 20
+print(worker.info())
+print(helper.info())
+print(maker.info())
 
-
-fighter1 = Warrior()
-fighter2 = Warrior()
-
-while fighter1.health > 0 and fighter2.health > 0:
-    attacker, defender = choice([(fighter1, fighter2), (fighter2, fighter1)])
-    attacker.attack(defender)
-
-    print(f"{'First' if attacker == fighter1 else 'Second'} strikes!")
-    print(f"The {'second' if defender == fighter2 else 'first'} has {defender.health} health left")
-
-if fighter1.health > 0:
-    print("FIRST WINS")
-else:
-    print("SECOND WINS")
+del helper
+print("End of program")
+input()
