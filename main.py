@@ -1,34 +1,21 @@
-from random import randint
-import itertools
+class Rectangle:
+    def __init__(self, width, height, sign):
+        self.w = int(width)
+        self.h = int(height)
+        self.s = str(sign)
+
+    def __str__(self):
+        return "\n".join(self.s * self.w for i in range(self.h))
+
+    def __add__(self, other):
+        return Rectangle(self.w + other.w, self.h + other.h, self.s)
 
 
-class Person:
-    count = itertools.count()
+a = Rectangle(4, 2, 'w')
+print(a)
 
-    def __init__(self, team=randint(1, 2)):
-        self.id = next(Person.count)
-        self.team = team
+b = Rectangle(8, 3, 'z')
+print(b)
 
-
-class Hero(Person):
-    pass
-
-
-class Soldier(Person):
-    pass
-
-
-h1 = Hero(1)
-h2 = Hero(2)
-army1 = []
-army2 = []
-
-for i in range(20):
-    soldier = Soldier()
-    if soldier.team == 1:
-        army1.append(soldier)
-    else:
-        army2.append(soldier)
-
-print("Army 1 size:", len(army1))
-print("Army 2 size:", len(army2))
+print(a + b)
+print(b + a)
