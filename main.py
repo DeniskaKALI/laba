@@ -7,3 +7,4 @@ c = MyClass
 
 c.print_x()
 print(c.x)
+
